@@ -13,6 +13,7 @@ class _AuthenticateState extends State<Authenticate> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Authenticate'),
+        centerTitle: true,
       ),
       body: const Text('data'),
     );
