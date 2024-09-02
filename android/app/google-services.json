@@ -12,7 +12,20 @@
           "package_name": "com.daily_vital"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "344952764517-mthpc01dlbmpimnl1mr8dprpth56m7ev.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.daily_vital",
+            "certificate_hash": "8056ce81c8198c3362b0e2fa44329d78a94bfd5d"
+          }
+        },
+        {
+          "client_id": "344952764517-5n6rl3dutdrspbka09cgpo596jhvev32.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyD26kjzMlLKR6QfYkKG11s2I6V_RHimapg"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "344952764517-5n6rl3dutdrspbka09cgpo596jhvev32.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
