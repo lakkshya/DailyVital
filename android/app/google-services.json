@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "344952764517",
+    "project_id": "daily-vital",
+    "storage_bucket": "daily-vital.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:344952764517:android:545a07406b12890c38ee8c",
+        "android_client_info": {
+          "package_name": "com.daily_vital"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD26kjzMlLKR6QfYkKG11s2I6V_RHimapg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
