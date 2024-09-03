@@ -49,9 +49,3 @@ dependencies {
     // Add other Firebase dependencies as needed
     // For example: implementation 'com.google.firebase:firebase-auth'
 }
-
-<<<<<<< HEAD
-apply plugin: 'com.google.gms.google-services'
-=======
-apply plugin: 'com.google.gms.google-services'
->>>>>>> ba0b08ee668ae543df601375c30abbac60ed31b9
