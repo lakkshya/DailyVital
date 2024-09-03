@@ -1,5 +1,3 @@
-import 'package:daily_vital/screens/authenticate/sign_in.dart';
-import 'package:daily_vital/screens/authenticate/sign_up.dart';
 import 'package:flutter/material.dart';
 
 class Authenticate extends StatefulWidget {
@@ -12,6 +10,11 @@ class Authenticate extends StatefulWidget {
 class _AuthenticateState extends State<Authenticate> {
   @override
   Widget build(BuildContext context) {
-    return const SignUp();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Authenticate'),
+      ),
+      body: const Text('data'),
+    );
   }
 }
