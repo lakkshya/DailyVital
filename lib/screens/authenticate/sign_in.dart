@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:daily_vital/services/auth.dart';
 
@@ -87,8 +88,21 @@ class _SignInState extends State<SignIn> {
                         children: [
                           const Spacer(),
                           TextButton(
-                            onPressed: () {
-                              // Handle navigation to sign-up page
+                            onPressed: () async {
+                              if (email.isNotEmpty) {
+                                await _auth.resetPassword(email);
+                                // ignore: use_build_context_synchronously
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                      content:
+                                          Text('Password reset email sent')),
+                                );
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                      content: Text('Please enter your email')),
+                                );
+                              }
                             },
                             child: const Text(
                               'Forgot your password?',
@@ -165,8 +179,14 @@ class _SignInState extends State<SignIn> {
                       ),
                       const SizedBox(height: 20),
                       TextButton.icon(
-                        onPressed: () {
-                          // Handle Google Sign-In
+                        onPressed: () async {
+                          User? user = await _auth.signInWithGoogle();
+                          if (user != null) {
+                            print('Signed in as ${user.displayName}');
+                            // Navigate to the next screen or show success message
+                          } else {
+                            print('Google sign-in failed');
+                          }
                         },
                         icon: Image.asset(
                           'assets/google.png', // Add a Google icon asset to your project
@@ -174,7 +194,7 @@ class _SignInState extends State<SignIn> {
                           width: 24.0,
                         ),
                         label: Text(
-                          'Sign in with Google',
+                          'Google',
                           style: TextStyle(
                             fontSize: 16.0,
                             color: Colors.grey[700],

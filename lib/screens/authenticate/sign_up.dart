@@ -1,8 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:daily_vital/services/auth.dart';
 
 class SignUp extends StatefulWidget {
-
   final Function toggleView;
 
   const SignUp({super.key, required this.toggleView});
@@ -12,14 +12,13 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
 
   //text field state
   String email = '';
   String password = '';
-  String error='';
+  String error = '';
 
   @override
   Widget build(BuildContext context) {
@@ -88,10 +87,12 @@ class _SignUpState extends State<SignUp> {
                       const SizedBox(height: 30),
                       ElevatedButton(
                         onPressed: () async {
-                          if(_formKey.currentState!.validate()) {
-                            var result = await _auth.signUpWithEmailAndPassword(email, password);
-                            if(result == null) {
-                              setState(() => error = 'Please enter a valid email');
+                          if (_formKey.currentState!.validate()) {
+                            var result = await _auth.signUpWithEmailAndPassword(
+                                email, password);
+                            if (result == null) {
+                              setState(
+                                  () => error = 'Please enter a valid email');
                             }
                           }
                         },
@@ -99,7 +100,8 @@ class _SignUpState extends State<SignUp> {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(5.0),
                           ),
-                          backgroundColor: const Color.fromARGB(255, 0, 87, 228),
+                          backgroundColor:
+                              const Color.fromARGB(255, 0, 87, 228),
                         ),
                         child: const Text(
                           'Sign Up',
@@ -112,11 +114,11 @@ class _SignUpState extends State<SignUp> {
                       const SizedBox(height: 10),
                       Center(
                         child: Text(
-                        error,
-                        style: TextStyle(
-                          color: Colors.red[900],
+                          error,
+                          style: TextStyle(
+                            color: Colors.red[900],
+                          ),
                         ),
-                      ),
                       ),
                       const SizedBox(height: 30),
                       Row(
@@ -128,7 +130,8 @@ class _SignUpState extends State<SignUp> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 10.0),
                             child: Text(
                               'or continue with',
                               style: TextStyle(
@@ -147,8 +150,14 @@ class _SignUpState extends State<SignUp> {
                       ),
                       const SizedBox(height: 20),
                       TextButton.icon(
-                        onPressed: () {
-                          // Handle Google Sign-In
+                        onPressed: () async {
+                          User? user = await _auth.signInWithGoogle();
+                          if (user != null) {
+                            print('Signed in as ${user.displayName}');
+                            // Navigate to the next screen or show success message
+                          } else {
+                            print('Google sign-in failed');
+                          }
                         },
                         icon: Image.asset(
                           'assets/google.png', // Add a Google icon asset to your project
@@ -156,7 +165,7 @@ class _SignUpState extends State<SignUp> {
                           width: 24.0,
                         ),
                         label: Text(
-                          'Sign up with Google',
+                          'Google',
                           style: TextStyle(
                             fontSize: 16.0,
                             color: Colors.grey[700],
