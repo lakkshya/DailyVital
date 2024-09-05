@@ -96,13 +96,6 @@ class _SignUpState extends State<SignUp> {
                             }
                           }
                         },
-                        style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5.0),
-                          ),
-                          backgroundColor:
-                              const Color.fromARGB(255, 0, 87, 228),
-                        ),
                         child: const Text(
                           'Sign Up',
                           style: TextStyle(
@@ -173,9 +166,6 @@ class _SignUpState extends State<SignUp> {
                         ),
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.white,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(5.0),
-                            ),
                             side: const BorderSide(color: Colors.grey)),
                       ),
                     ],
