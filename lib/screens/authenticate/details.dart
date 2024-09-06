@@ -24,7 +24,7 @@ class _DetailsState extends State<Details> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Container(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.fromLTRB(30.0, 100.0, 30.0, 0.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -92,10 +92,9 @@ class _DetailsState extends State<Details> {
                   DropdownButtonFormField<String>(
                     value: gender,
                     decoration: const InputDecoration(
-                      labelText: 'Gender',
-                      border: OutlineInputBorder(),
-                      prefixIcon: Icon(Icons.person_search)
-                    ),
+                        labelText: 'Gender',
+                        border: OutlineInputBorder(),
+                        prefixIcon: Icon(Icons.person_search)),
                     onChanged: (val) {
                       setState(() => gender = val!);
                     },
@@ -134,7 +133,27 @@ class _DetailsState extends State<Details> {
                         initialDate: DateTime(2000),
                         firstDate: DateTime(1900),
                         lastDate: DateTime.now(),
+                        builder: (context, child) {
+                          return Theme(
+                            data: Theme.of(context).copyWith(
+                              colorScheme: const ColorScheme.light(
+                                primary: Colors
+                                    .blueAccent,
+                                onPrimary: Colors.white, 
+                                onSurface: Colors
+                                    .blueAccent, 
+                              ),
+                              textButtonTheme: TextButtonThemeData(
+                                style: TextButton.styleFrom(
+                                  foregroundColor: Colors.blueAccent,
+                                ),
+                              ),
+                            ),
+                            child: child!,
+                          );
+                        },
                       );
+
                       if (pickedDate != null) {
                         setState(() {
                           dateOfBirth =
@@ -161,10 +180,9 @@ class _DetailsState extends State<Details> {
                   ),
                   TextFormField(
                     decoration: const InputDecoration(
-                      labelText: 'Mobile Number',
-                      border: OutlineInputBorder(),
-                      prefixIcon: Icon(Icons.call)
-                    ),
+                        labelText: 'Mobile Number',
+                        border: OutlineInputBorder(),
+                        prefixIcon: Icon(Icons.call)),
                     keyboardType: TextInputType.phone,
                     validator: (val) => val!.length != 10
                         ? 'Enter a valid 10-digit mobile number'

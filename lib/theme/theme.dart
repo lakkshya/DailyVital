@@ -50,4 +50,26 @@ final ThemeData appTheme = ThemeData(
       ),
     ),
   ),
+  datePickerTheme: DatePickerThemeData(
+    backgroundColor: Colors.white,
+    headerBackgroundColor: Colors.blueAccent,
+    headerForegroundColor: Colors.white,
+    dayForegroundColor: const WidgetStatePropertyAll(Colors.black),
+    yearForegroundColor: const WidgetStatePropertyAll(Colors.black),
+    todayForegroundColor: const WidgetStatePropertyAll(Colors.blueAccent),
+    todayBackgroundColor: WidgetStatePropertyAll(Colors.blueAccent.withOpacity(0.2)),
+    dividerColor: Colors.white,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(15.0),
+    ),
+    weekdayStyle: const TextStyle(
+      color: Colors.black,
+    ),
+    yearStyle: const TextStyle(
+      color: Colors.blueAccent,
+    ),
+    dayStyle: const TextStyle(
+      color: Colors.black,
+    ),
+  ),
 );

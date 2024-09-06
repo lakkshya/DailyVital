@@ -24,7 +24,7 @@ class _SignInState extends State<SignIn> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Container(
+      body: SingleChildScrollView(
           padding: const EdgeInsets.fromLTRB(30.0, 150.0, 30.0, 0.0),
           child: Center(
             child: Column(
