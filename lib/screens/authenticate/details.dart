@@ -90,11 +90,14 @@ class _DetailsState extends State<Details> {
                     height: 10.0,
                   ),
                   DropdownButtonFormField<String>(
+                    isExpanded: false,
                     value: gender,
                     decoration: const InputDecoration(
                         labelText: 'Gender',
                         border: OutlineInputBorder(),
-                        prefixIcon: Icon(Icons.person_search)),
+                        prefixIcon: Icon(Icons.person_search)
+                    ),
+                    dropdownColor: Colors.white,
                     onChanged: (val) {
                       setState(() => gender = val!);
                     },

@@ -1,3 +1,4 @@
+import 'package:daily_vital/screens/shared/loading.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:daily_vital/services/auth.dart';
@@ -14,6 +15,7 @@ class SignUp extends StatefulWidget {
 class _SignUpState extends State<SignUp> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
+  bool loading = false;
 
   //text field state
   String email = '';
@@ -22,7 +24,7 @@ class _SignUpState extends State<SignUp> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return loading ? const Loading() : Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
           padding: const EdgeInsets.fromLTRB(30.0, 150.0, 30.0, 0.0),
@@ -88,11 +90,16 @@ class _SignUpState extends State<SignUp> {
                       ElevatedButton(
                         onPressed: () async {
                           if (_formKey.currentState!.validate()) {
+                            setState(() => loading = true);
                             var result = await _auth.signUpWithEmailAndPassword(
                                 email, password);
                             if (result == null) {
                               setState(
-                                  () => error = 'Please enter a valid email');
+                                  () { 
+                                    error = 'Please enter a valid email';
+                                    loading = false;
+                                  }
+                              );
                             }
                           }
                         },
@@ -144,6 +151,7 @@ class _SignUpState extends State<SignUp> {
                       const SizedBox(height: 20),
                       TextButton.icon(
                         onPressed: () async {
+                          setState(() => loading = true); 
                           User? user = await _auth.signInWithGoogle();
                           if (user != null) {
                             print('Signed in as ${user.displayName}');
@@ -151,6 +159,7 @@ class _SignUpState extends State<SignUp> {
                           } else {
                             print('Google sign-in failed');
                           }
+                          setState(() => loading = false); 
                         },
                         icon: Image.asset(
                           'assets/google.png', // Add a Google icon asset to your project
