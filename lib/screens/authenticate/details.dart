@@ -1,5 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:daily_vital/models/appuser.dart';
+import 'package:daily_vital/screens/mainscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 class Details extends StatefulWidget {
   const Details({super.key});
@@ -22,6 +26,8 @@ class _DetailsState extends State<Details> {
 
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<AppUser>(context);
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -95,8 +101,7 @@ class _DetailsState extends State<Details> {
                     decoration: const InputDecoration(
                         labelText: 'Gender',
                         border: OutlineInputBorder(),
-                        prefixIcon: Icon(Icons.person_search)
-                    ),
+                        prefixIcon: Icon(Icons.person_search)),
                     dropdownColor: Colors.white,
                     onChanged: (val) {
                       setState(() => gender = val!);
@@ -140,11 +145,9 @@ class _DetailsState extends State<Details> {
                           return Theme(
                             data: Theme.of(context).copyWith(
                               colorScheme: const ColorScheme.light(
-                                primary: Colors
-                                    .blueAccent,
-                                onPrimary: Colors.white, 
-                                onSurface: Colors
-                                    .blueAccent, 
+                                primary: Colors.blueAccent,
+                                onPrimary: Colors.white,
+                                onSurface: Colors.blueAccent,
                               ),
                               textButtonTheme: TextButtonThemeData(
                                 style: TextButton.styleFrom(
@@ -198,9 +201,26 @@ class _DetailsState extends State<Details> {
                     height: 50.0,
                   ),
                   ElevatedButton(
-                    onPressed: () {
+                    onPressed: () async {
                       if (_formKey.currentState!.validate()) {
-                        Navigator.pushReplacementNamed(context, '/home');
+                        int contactNo = int.tryParse(mobileNumber) ?? 0;
+
+                        await FirebaseFirestore.instance
+                            .collection('users')
+                            .doc(user.uid)
+                            .update({
+                          'name': name,
+                          'gender': gender,
+                          'dateOfBirth': dateOfBirth,
+                          'contactNo': contactNo,
+                          'isProfileComplete': true,
+                        });
+                        Navigator.pushReplacement(
+                            // ignore: use_build_context_synchronously
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const MainScreen(index: 0)));
                       }
                     },
                     child: const Text(

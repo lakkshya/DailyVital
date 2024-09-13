@@ -24,12 +24,6 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         theme: appTheme,
         home: const Wrapper(),
-        // initialRoute: '/',
-        // routes: {
-        //   '/': (context) => const Wrapper(),
-        //   '/home': (context) => Home(),
-        //   '/profile': (context) => const Profile(),
-        // },
       ),
     );
   }
