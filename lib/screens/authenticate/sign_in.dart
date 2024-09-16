@@ -36,7 +36,7 @@ class _SignInState extends State<SignIn> {
                   style: TextStyle(
                     fontSize: 32.0,
                     fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 0, 87, 228),
+                    color: Color(0xFF003B36),
                   ),
                   textAlign: TextAlign.center,
                 ),
@@ -109,7 +109,7 @@ class _SignInState extends State<SignIn> {
                             child: const Text(
                               'Forgot your password?',
                               style: TextStyle(
-                                color: Colors.blueAccent,
+                                color: Color(0xFF008F77),
                               ),
                             ),
                           ),
@@ -219,7 +219,7 @@ class _SignInState extends State<SignIn> {
                   child: const Text(
                     'Don\'t have an account? Sign Up',
                     style: TextStyle(
-                      color: Colors.blueAccent,
+                      color: Color(0xFF008F77),
                     ),
                   ),
                 ),

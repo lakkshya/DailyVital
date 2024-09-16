@@ -36,7 +36,7 @@ class _SignUpState extends State<SignUp> {
                   style: TextStyle(
                     fontSize: 32.0,
                     fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 0, 87, 228),
+                    color: Color(0xFF003B36),
                   ),
                   textAlign: TextAlign.center,
                 ),
@@ -190,7 +190,7 @@ class _SignUpState extends State<SignUp> {
                   child: const Text(
                     'I already have an account. Sign In',
                     style: TextStyle(
-                      color: Colors.blueAccent,
+                      color: Color(0xFF008F77),
                     ),
                   ),
                 ),

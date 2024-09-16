@@ -37,18 +37,18 @@ class _MainScreenState extends State<MainScreen> {
       backgroundColor: Colors.white,
       body: _screens[_currentIndex],
       floatingActionButton: FloatingActionButton(
-        backgroundColor: const Color.fromARGB(255, 0, 87, 228),
+        backgroundColor: const Color(0xFF003B36),
         foregroundColor: Colors.white,
         onPressed: () {},
         child: const Icon(Icons.qr_code_scanner),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
-        color: Colors.blue[50],
+        color: Colors.grey[300],
         shape: const CircularNotchedRectangle(),
         notchMargin: 10.0,
         child: SizedBox(
-          height: 50,
+          height: 70,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -66,12 +66,12 @@ class _MainScreenState extends State<MainScreen> {
                         children: [
                           Icon(
                             Icons.home,
-                            color: _currentIndex == 0 ?const Color.fromARGB(255, 0, 87, 228) : const Color.fromARGB(255, 119, 157, 219),
+                            color: _currentIndex == 0 ?const Color(0xFF003B36) : const Color.fromARGB(255, 141, 161, 159),
                           ),
                           Text(
                             'Home',
                             style: TextStyle(
-                              color: _currentIndex == 0 ? const Color.fromARGB(255, 0, 87, 228) : const Color.fromARGB(255, 119, 157, 219),
+                              color: _currentIndex == 0 ? const Color(0xFF003B36) : const Color.fromARGB(255, 141, 161, 159),
                             ),
                           ),
                         ],
@@ -94,12 +94,12 @@ class _MainScreenState extends State<MainScreen> {
                         children: [
                           Icon(
                             Icons.person,
-                            color: _currentIndex == 1 ? const Color.fromARGB(255, 0, 87, 228) : const Color.fromARGB(255, 119, 157, 219),
+                            color: _currentIndex == 1 ? const Color(0xFF003B36) : const Color.fromARGB(255, 141, 161, 159),
                           ),
                           Text(
                             'Profile',
                             style: TextStyle(
-                              color: _currentIndex == 1 ? const Color.fromARGB(255, 0, 87, 228) : const Color.fromARGB(255, 119, 157, 219),
+                              color: _currentIndex == 1 ? const Color(0xFF003B36) : const Color.fromARGB(255, 141, 161, 159),
                             ),
                           ),
                         ],

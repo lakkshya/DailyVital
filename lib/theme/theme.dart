@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 
 final ThemeData appTheme = ThemeData(
-  primarySwatch: Colors.blue,
+  primarySwatch: Colors.teal,
   textSelectionTheme: TextSelectionThemeData(
-    cursorColor: Colors.blueAccent,
-    selectionColor: Colors.blueAccent.withOpacity(0.3),
-    selectionHandleColor: Colors.blueAccent,
+    cursorColor: const Color(0xFF008F77),
+    selectionColor: const Color(0xFF008F77).withOpacity(0.3),
+    selectionHandleColor: const Color(0xFF008F77),
   ),
-  focusColor: Colors.blueAccent,
+  focusColor: const Color(0xFF008F77),
   inputDecorationTheme: InputDecorationTheme(
     border: OutlineInputBorder(
       borderRadius: BorderRadius.circular(15.0),
     ),
     focusedBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(15.0),
-      borderSide: const BorderSide(color: Colors.blueAccent, width: 2.0),
+      borderSide: const BorderSide(color: Color(0xFF008F77), width: 2.0),
     ),
     enabledBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(15.0),
@@ -38,7 +38,7 @@ final ThemeData appTheme = ThemeData(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15.0),
       ),
-      backgroundColor: const Color.fromARGB(255, 0, 87, 228),
+      backgroundColor: const Color(0xFF003B36),
       foregroundColor: Colors.white, 
     ),
   ),
@@ -52,12 +52,12 @@ final ThemeData appTheme = ThemeData(
   ),
   datePickerTheme: DatePickerThemeData(
     backgroundColor: Colors.white,
-    headerBackgroundColor: Colors.blueAccent,
+    headerBackgroundColor: const Color(0xFF003B36),
     headerForegroundColor: Colors.white,
     dayForegroundColor: const WidgetStatePropertyAll(Colors.black),
     yearForegroundColor: const WidgetStatePropertyAll(Colors.black),
-    todayForegroundColor: const WidgetStatePropertyAll(Colors.blueAccent),
-    todayBackgroundColor: WidgetStatePropertyAll(Colors.blueAccent.withOpacity(0.2)),
+    todayForegroundColor: const WidgetStatePropertyAll(Color(0xFF008F77)),
+    todayBackgroundColor: WidgetStatePropertyAll(const Color(0xFF008F77).withOpacity(0.2)),
     dividerColor: Colors.white,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(15.0),
@@ -66,7 +66,7 @@ final ThemeData appTheme = ThemeData(
       color: Colors.black,
     ),
     yearStyle: const TextStyle(
-      color: Colors.blueAccent,
+      color: Color(0xFF003B36),
     ),
     dayStyle: const TextStyle(
       color: Colors.black,

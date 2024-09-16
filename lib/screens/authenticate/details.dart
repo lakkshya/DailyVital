@@ -40,7 +40,7 @@ class _DetailsState extends State<Details> {
               style: TextStyle(
                 fontSize: 24.0,
                 fontWeight: FontWeight.bold,
-                color: Color.fromARGB(255, 0, 87, 228),
+                color: Color(0xFF003B36),
               ),
             ),
             const SizedBox(
@@ -145,13 +145,13 @@ class _DetailsState extends State<Details> {
                           return Theme(
                             data: Theme.of(context).copyWith(
                               colorScheme: const ColorScheme.light(
-                                primary: Colors.blueAccent,
+                                primary: Color(0xFF008F77),
                                 onPrimary: Colors.white,
-                                onSurface: Colors.blueAccent,
+                                onSurface: Color(0xFF008F77),
                               ),
                               textButtonTheme: TextButtonThemeData(
                                 style: TextButton.styleFrom(
-                                  foregroundColor: Colors.blueAccent,
+                                  foregroundColor: const Color(0xFF008F77),
                                 ),
                               ),
                             ),
