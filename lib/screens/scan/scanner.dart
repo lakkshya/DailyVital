@@ -6,6 +6,9 @@ import 'dart:io';
 import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:path_provider/path_provider.dart';
+import 'package:daily_vital/screens/scan/medicinesetter.dart';
+import 'package:daily_vital/models/medicine.dart';
+import 'package:daily_vital/screens/shared/loading.dart';
 
 class Scanner extends StatefulWidget {
   const Scanner({super.key});
@@ -18,6 +21,7 @@ class _ScannerState extends State<Scanner> {
   late CameraController _controller;
   late Future<void> _initializeControllerFuture;
   bool _isFlashOn = false;
+  bool _isRecognizingText = false; // New variable to track text recognition
   final ImagePicker _picker = ImagePicker();
 
   @override
@@ -65,22 +69,45 @@ class _ScannerState extends State<Scanner> {
   }
 
   Future<void> _recognizeText(File image) async {
+    setState(() {
+      _isRecognizingText = true; // Start loading indicator
+    });
+
     final inputImage = InputImage.fromFile(image);
     final textRecognizer = TextRecognizer();
 
     try {
       print('Starting text recognition...');
-      final recognisedText = await textRecognizer.processImage(inputImage);
+      final recognizedText = await textRecognizer.processImage(inputImage);
 
-      String recognizedTextString = recognisedText.text;
+      String recognizedTextString = recognizedText.text;
       print('Recognized Text: $recognizedTextString');
 
       await _createPdf(recognizedTextString);
+      _navigateToMedicineSetter(recognizedTextString);
     } catch (e) {
       print('Error recognizing text: $e');
     } finally {
       await textRecognizer.close();
+      setState(() {
+        _isRecognizingText = false; // Stop loading indicator
+      });
     }
+  }
+
+  void _navigateToMedicineSetter(String recognizedText) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => MedicineSetter(
+          medicines: [
+            Medicine(name: 'Paracetamol', doses: '2', time: '08:00 AM'),
+            Medicine(name: 'Ibuprofen', doses: '1', time: '12:00 PM'),
+            // Add more medicines here
+          ],
+        ),
+      ),
+    );
   }
 
   Future<void> _createPdf(String text) async {
@@ -94,7 +121,6 @@ class _ScannerState extends State<Scanner> {
       ),
     );
 
-    // Get the directory to save the PDF
     final directory = await getApplicationDocumentsDirectory();
     final file = File('${directory.path}/recognized_text.pdf');
     await file.writeAsBytes(await pdf.save());
@@ -120,21 +146,26 @@ class _ScannerState extends State<Scanner> {
           },
         ),
       ),
-      body: FutureBuilder<void>(
-        future: _initializeControllerFuture,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            return Stack(
-              children: [
-                SizedBox.expand(
-                  child: CameraPreview(_controller),
-                ),
-              ],
-            );
-          } else {
-            return const Center(child: CircularProgressIndicator());
-          }
-        },
+      body: Stack(
+        children: [
+          FutureBuilder<void>(
+            future: _initializeControllerFuture,
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.done) {
+                return CameraPreview(_controller);
+              } else {
+                return const Center(child: Loading());
+              }
+            },
+          ),
+          if (_isRecognizingText) // Show loading overlay during text recognition
+            Container(
+              color: Colors.black54,
+              child: const Center(
+                child: Loading(),
+              ),
+            ),
+        ],
       ),
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(bottom: 100.0),
@@ -147,6 +178,7 @@ class _ScannerState extends State<Scanner> {
                 await _initializeControllerFuture;
                 final image = await _controller.takePicture();
                 print('Image captured: ${image.path}');
+                await _recognizeText(File(image.path));
               } catch (e) {
                 print('Error capturing image: $e');
               }

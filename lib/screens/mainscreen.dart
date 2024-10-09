@@ -50,7 +50,7 @@ class _MainScreenState extends State<MainScreen> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
-        color: Colors.grey[300],
+        color: Color(0xfff0ead2),
         shape: const CircularNotchedRectangle(),
         notchMargin: 10.0,
         child: SizedBox(

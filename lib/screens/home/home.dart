@@ -133,7 +133,7 @@ class _HomeState extends State<Home> {
                       width: 120.0,
                       padding: const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 8.0),
                       decoration: BoxDecoration(
-                        color: const Color(0xFF008F77),
+                        color: Colors.grey[200],
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                       child: Column(children: [
@@ -142,14 +142,14 @@ class _HomeState extends State<Home> {
                           style: TextStyle(
                             fontSize: 20.0,
                             fontWeight: FontWeight.bold,
-                            color: Colors.white,
+                            color: Colors.black,
                           ),
                         ),
                         Text(
                           '2 pills',
                           style: TextStyle(
                             fontSize: 16.0,
-                            color: Colors.grey[200],
+                            color: Colors.grey[700],
                           ),
                         ),
                         const SizedBox(
@@ -175,7 +175,7 @@ class _HomeState extends State<Home> {
                       width: 120.0,
                       padding: const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 8.0),
                       decoration: BoxDecoration(
-                        color: const Color(0xFF008F77),
+                        color: Colors.grey[200],
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                       child: Column(children: [
@@ -184,14 +184,14 @@ class _HomeState extends State<Home> {
                           style: TextStyle(
                             fontSize: 20.0,
                             fontWeight: FontWeight.bold,
-                            color: Colors.white,
+                            color: Colors.black,
                           ),
                         ),
                         Text(
                           '2 pills',
                           style: TextStyle(
                             fontSize: 16.0,
-                            color: Colors.grey[200],
+                            color: Colors.grey[700],
                           ),
                         ),
                         const SizedBox(
@@ -217,7 +217,7 @@ class _HomeState extends State<Home> {
                       width: 120.0,
                       padding: const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 8.0),
                       decoration: BoxDecoration(
-                        color: const Color(0xFF008F77),
+                        color: Colors.grey[200],
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                       child: Column(children: [
@@ -226,14 +226,14 @@ class _HomeState extends State<Home> {
                           style: TextStyle(
                             fontSize: 20.0,
                             fontWeight: FontWeight.bold,
-                            color: Colors.white,
+                            color: Colors.black,
                           ),
                         ),
                         Text(
                           '2 pills',
                           style: TextStyle(
                             fontSize: 16.0,
-                            color: Colors.grey[200],
+                            color: Colors.grey[700],
                           ),
                         ),
                         const SizedBox(
@@ -259,7 +259,7 @@ class _HomeState extends State<Home> {
                       width: 120.0,
                       padding: const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 8.0),
                       decoration: BoxDecoration(
-                        color: const Color(0xFF008F77),
+                        color: Colors.grey[200],
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                       child: Column(children: [
@@ -268,14 +268,14 @@ class _HomeState extends State<Home> {
                           style: TextStyle(
                             fontSize: 20.0,
                             fontWeight: FontWeight.bold,
-                            color: Colors.white,
+                            color: Colors.black,
                           ),
                         ),
                         Text(
                           '2 pills',
                           style: TextStyle(
                             fontSize: 16.0,
-                            color: Colors.grey[200],
+                            color: Colors.grey[700],
                           ),
                         ),
                         const SizedBox(
@@ -302,16 +302,15 @@ class _HomeState extends State<Home> {
               ),
               SizedBox(
                 width: double.infinity,
-                child: TextButton(
+                child: ElevatedButton(
                   style: TextButton.styleFrom(
-                    backgroundColor: Colors.white,
-                    side: const BorderSide(color: Color(0xFF003B36))
+                    backgroundColor: const Color(0xff003B36),
                   ),
                   onPressed: () {},
                   child: const Text(
                     'See full',
                     style: TextStyle(
-                      color: Color(0xFF003B36),
+                      color: Colors.white,
                     ),
                   ),
                 ),
