@@ -1,5 +1,6 @@
 import 'package:daily_vital/screens/home/home.dart';
 import 'package:daily_vital/screens/profile/profile.dart';
+import 'package:daily_vital/screens/scan/scanner.dart';
 import 'package:flutter/material.dart';
 
 
@@ -39,7 +40,12 @@ class _MainScreenState extends State<MainScreen> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: const Color(0xFF003B36),
         foregroundColor: Colors.white,
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const Scanner()),
+            );
+        },
         child: const Icon(Icons.qr_code_scanner),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
