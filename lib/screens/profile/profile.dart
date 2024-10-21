@@ -11,8 +11,8 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
   final AuthService _auth = AuthService();
 
-  final String name = "John Doe";
-  final String age = "30";
+  final String name = "Lakshya Rana";
+  final String age = "22";
   final String contactNumber = "+1234567890";
   final String gender = "Male";
   final String avatarUrl = 'assets/man.png';

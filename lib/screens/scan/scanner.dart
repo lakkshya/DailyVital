@@ -3,12 +3,14 @@ import 'package:camera/camera.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:async';
 import 'dart:io';
-import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:path_provider/path_provider.dart';
 import 'package:daily_vital/screens/scan/medicinesetter.dart';
 import 'package:daily_vital/models/medicine.dart';
 import 'package:daily_vital/screens/shared/loading.dart';
+// import 'package:http/http.dart' as http;
+// import 'dart:convert';
+import 'package:flutter_tesseract_ocr/flutter_tesseract_ocr.dart';
 
 class Scanner extends StatefulWidget {
   const Scanner({super.key});
@@ -21,7 +23,7 @@ class _ScannerState extends State<Scanner> {
   late CameraController _controller;
   late Future<void> _initializeControllerFuture;
   bool _isFlashOn = false;
-  bool _isRecognizingText = false; // New variable to track text recognition
+  bool _isRecognizingText = false;
   final ImagePicker _picker = ImagePicker();
 
   @override
@@ -70,27 +72,21 @@ class _ScannerState extends State<Scanner> {
 
   Future<void> _recognizeText(File image) async {
     setState(() {
-      _isRecognizingText = true; // Start loading indicator
+      _isRecognizingText = true;
     });
 
-    final inputImage = InputImage.fromFile(image);
-    final textRecognizer = TextRecognizer();
-
     try {
-      print('Starting text recognition...');
-      final recognizedText = await textRecognizer.processImage(inputImage);
+      final recognizedText = await FlutterTesseractOcr.extractText(image.path);
+      print('Recognized Text: $recognizedText');
+      _navigateToMedicineSetter(recognizedText); 
 
-      String recognizedTextString = recognizedText.text;
-      print('Recognized Text: $recognizedTextString');
-
-      await _createPdf(recognizedTextString);
-      _navigateToMedicineSetter(recognizedTextString);
+      setState(() {
+        _isRecognizingText = false; 
+      });
     } catch (e) {
       print('Error recognizing text: $e');
-    } finally {
-      await textRecognizer.close();
       setState(() {
-        _isRecognizingText = false; // Stop loading indicator
+        _isRecognizingText = false; 
       });
     }
   }

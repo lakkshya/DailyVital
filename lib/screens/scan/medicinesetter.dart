@@ -7,7 +7,7 @@ class MedicineSetter extends StatefulWidget {
   const MedicineSetter({super.key, required this.medicines});
 
   @override
-  _MedicineSetterState createState() => _MedicineSetterState();
+  State<MedicineSetter> createState() => _MedicineSetterState();
 }
 
 class _MedicineSetterState extends State<MedicineSetter> {
@@ -33,7 +33,7 @@ class _MedicineSetterState extends State<MedicineSetter> {
               int index = _medicines.indexOf(medicine);
               return Card(
                 margin: const EdgeInsets.symmetric(vertical: 8.0),
-                color: Color(0xfff0ead2),
+                color: const Color(0xfff0ead2),
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Column(
@@ -66,7 +66,7 @@ class _MedicineSetterState extends State<MedicineSetter> {
                   ),
                 ),
               );
-            }).toList(),
+            }),
             const SizedBox(height: 16.0),
             SizedBox(
               width: double.infinity,
